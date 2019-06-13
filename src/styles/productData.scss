@@ -8,11 +8,13 @@
   min-height: 600px;
 }
 .main {
-  display: grid;
+  display: flex;
+  max-width: 1230px;
+  margin: 41px auto 0;
 }
 .size-product-section {
   display: flex;
-  padding: 20px 2%;
+  padding: 27px 0%;
 }
 .suggetion {
   font-size: 13px;

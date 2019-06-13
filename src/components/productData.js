@@ -4,7 +4,7 @@ import SortFilter from './sortFilter.js';
 import Products from './products.js';
 import Cart from './cart.js';
 import forEach from 'lodash/forEach';
-import './../styles/productData.css';
+import './../styles/productData.scss';
 import _ from 'lodash';
 
 class ProductData extends React.Component {

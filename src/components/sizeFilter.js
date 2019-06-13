@@ -1,5 +1,5 @@
 import React from 'react';
-import './../styles/sizeFilter.css';
+import './../styles/sizeFilter.scss';
 
 class SizeFilter extends React.Component {
 	constructor(props) {

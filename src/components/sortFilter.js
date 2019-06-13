@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {sortOption} from './../actions';
-import './../styles/sortFilter.css';
+import './../styles/sortFilter.scss';
 
 class SortFilter extends React.Component {
 	constructor(props) {

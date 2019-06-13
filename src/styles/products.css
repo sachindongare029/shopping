@@ -1,0 +1,55 @@
+img {
+  height: 333px;
+  width: 229px;
+}
+.product-details {
+  /* width: 25%; */
+  padding: 10px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: center;
+}
+.product-details:hover {
+	border: 0.1px solid #eee;
+}
+.product-details:hover .btn{
+  background-color: #eabf00 !important;
+}
+.title {
+  margin-top: 11px;
+}
+hr {
+  border-top: 4px solid #eabf00;
+  width: 35px;
+  border-radius: 2px;
+}
+.currency {
+  font-size: 15px;
+}
+.actual-price {
+	font-size: 22px;
+}
+.btn {
+  background-color: black !important;
+  border: 1px solid #ececec !important;
+  border-radius: 2px !important;
+  width: 100% !important;
+  color: white !important;
+  height: 54px;
+}
+.buy {
+  margin-top: 12px;
+}
+.unknown-shipping {
+  margin-top: 32px;
+}
+.label {
+  width: 92px;
+  background-color: #1b1a20;
+  color: white;
+  margin-left: 134px;
+  height: 24px;
+  font-size: 11px;
+  padding-top: 3px;
+}

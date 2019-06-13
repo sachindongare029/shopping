@@ -1,0 +1,22 @@
+.size-section {
+  width: 15%;
+}
+.product-section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+  min-height: 600px;
+}
+.main {
+  display: grid;
+}
+.size-product-section {
+  display: flex;
+  padding: 20px 2%;
+}
+.suggetion {
+  font-size: 13px;
+  margin-top: 7px;
+  z-index: 10;
+  position: absolute;
+}

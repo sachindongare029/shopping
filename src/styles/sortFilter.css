@@ -1,0 +1,39 @@
+.btn {
+	background-color: #fff;
+	border: 1px solid #ececec;
+	border-radius: 2px;
+  width: 150px;
+}
+.btn:hover {
+	border: 1px solid black;
+	box-shadow: none;
+}
+select {
+  background-color: #fff;
+  outline: none;
+  border: 1px solid #ececec;
+  border-radius: 2px;
+  margin-left: 10px;
+  width: auto;
+  height: 35px;
+  cursor: pointer;
+}
+.product {
+	width: 100%;
+}
+.product-header {
+  width: 100%;
+  margin-bottom: 10px;
+  height: 40px;
+}
+.dropdown {
+	float: right;
+}
+.sujjections-count {
+	float: left;
+}
+.product-body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}

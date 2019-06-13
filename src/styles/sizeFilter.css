@@ -1,0 +1,29 @@
+.size-parent {
+  display: flex;
+  flex-wrap: wrap;
+}
+.size-parent > div {
+  flex: 0 1 auto;
+  margin: 12px 0px 10px 3px;
+}
+button {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  border: none;
+  background-color: #ececec;
+  font-size: 13px;
+  color: #1b1a20;
+}
+button:hover {
+	border: 1px solid #1b1a20;
+}
+button:active {
+	background: black;
+	color: white;
+}
+.btn-unclicked {
+  margin: 0px 0px 6px 2px;
+  background-color: #ececec;
+  color: black;
+}

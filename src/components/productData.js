@@ -28,6 +28,7 @@ class ProductData extends React.Component {
 		this.handleSize = this.handleSize.bind(this);
 		this.handleSort = this.handleSort.bind(this);
 		this.handleCart = this.handleCart.bind(this);
+		this.handleRemove = this.handleRemove.bind(this);
 	}
 
 	componentDidMount() {
@@ -94,13 +95,19 @@ class ProductData extends React.Component {
 		let addCart = {...product, quantity: 1};
 		cartProduct.push(addCart);
 
-		// console.log(cartProduct);
-	 //  cartProduct.filter(function(a){
-  // 		console.log(a.id);
-		// });
+		cartProduct.map((element, index) => {
+			// console.log("element", element.id);
+		})
 
 		this.setState({
 			cart: cartProduct
+		});
+	}
+
+	handleRemove(productId) {
+		let { cart } = this.state;
+		_.remove(cart, function(n) {
+		  return (n.id == productId);
 		});
 	}
 
@@ -111,6 +118,7 @@ class ProductData extends React.Component {
 				<div className="main">
 					<Cart 
 						products= {cart}
+						handleRemove = {this.handleRemove} 
 					/>
 					<div className="size-product-section">
 						<div className="size-section">

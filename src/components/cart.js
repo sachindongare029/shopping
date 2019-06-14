@@ -6,10 +6,12 @@ class Cart extends Component {
     super(props);
     this.state = {
       open: false,
-      isHovered: true
+      isHovered: true,
     }
     this.handleDrawer = this.handleDrawer.bind(this);
     this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleCheckout = this.handleCheckout.bind(this);
   }
 
   handleDrawer() {
@@ -19,19 +21,31 @@ class Cart extends Component {
   }
   handleMouseOver(e) {
     let priceEl = e.target.parentElement;
-    let productParent = priceEl.parentElement;
-    // console.log("event", productParent);
+    let cartContainer = (priceEl.parentElement).parentElement;
     this.setState(prevState => ({
-        isHovered: !prevState.isHovered
+      isHovered: !prevState.isHovered,
     }));
-    this.state.isHovered ? (productParent.className="product-container product-container-mouseover") : (productParent.className="product-container");
+    this.state.isHovered ? (cartContainer.className="cart-container cart-container-mouseover") : (cartContainer.className="cart-container");
+  }
+  handleClick(e) {
+    var elem = document.getElementById("remove-item-btn");
+    // elem.removeEventListener("onMouseEnter", this.handleMouseOver, false);
+    this.props.handleRemove(e.target.dataset.txt);
+  }
+  handleCheckout(total) {
+    total == 0.00 ? alert("Please enter some product to cart..") : alert("Your Total is : $" + total);
   }
 
   render() {
-    let { open, isHovered } = this.state;
+    let { open, isHovered, node } = this.state;
     let product = this.props.products;
     let drawerState = open ? 'cart-drawer-open' : 'cart-drawer-closed';
     let itemCount = product.length;
+    let total = product.map((element, index) => {
+                  return(element.quantity * element.price);
+                })
+                .reduce((a, b) => a + b, 0)
+                .toFixed(2)
     return (
       <div>
         <div className="open" onClick={this.handleDrawer} >
@@ -55,9 +69,9 @@ class Cart extends Component {
               </div>
               { product.map((products, i) => {
                   return(
-                    <div key={i} className="cart-container">
+                    <div key={i} className="cart-container" id="cart-container">
                       <hr className="cart-hr" />
-                      <div id="product-container" className="product-container">
+                      <div className="product-container">
                         <div className="image-section">
                           <img className="cart-image" src="./products/product2.jpg" alt="product" />
                         </div>
@@ -68,7 +82,16 @@ class Cart extends Component {
                           <span className="cart-info">Quantity: {products.quantity}</span>
                         </div>
                         <div className="price-remove">
-                          <div className="remove-item-btn" onMouseEnter={(e) => this.handleMouseOver(e)} onMouseLeave={(e) => this.handleMouseOver(e)}> X </div>
+                          <div 
+                            className="remove-item-btn" 
+                            data-txt={products.id}
+                            id="remove-item-btn"
+                            onClick={(e) => this.handleClick(e)}
+                            onMouseEnter={(e) => this.handleMouseOver(e)} 
+                            onMouseLeave={(e) => this.handleMouseOver(e)}
+                          >
+                            X 
+                          </div>
                           <span className="cart-price">${products.price}</span>
                         </div>
                       </div>
@@ -76,6 +99,11 @@ class Cart extends Component {
                   );
                 })
               }
+              <div className="cart-footer">
+                <div className="subtotal">SUBTOTAL</div>
+                <div className="total">$  {total}</div>
+                <div className="checkout-btn" onClick={() => this.handleCheckout(total)}>CHECKOUT</div>
+              </div>
             </div>
           </div>
         </span>

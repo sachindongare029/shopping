@@ -5,9 +5,9 @@ class Products extends React.Component {
 	constructor(props) {
 	  super(props);
 	
-	  this.state = {};
 	  this.handleClick = this.handleClick.bind(this);
 	}
+
 	handleClick(product) {
 		this.props.handleCart(product);
 	}
@@ -26,7 +26,7 @@ class Products extends React.Component {
 						: (<div className="unknown-shipping"></div>)
 					}
 					<div className="image">
-						<img src="./products/product2.jpg" alt="product" />
+						<img src={products.image} alt="product" />
 					</div>
 					<div className="title">
 						{products.title}<br />

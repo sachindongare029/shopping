@@ -15,6 +15,25 @@ class ProductData extends React.Component {
 			data: [],
 			cart: [],
 			cartProduct: [],
+			raw: [],
+			images: [
+				"./products/product1.jpg",
+				"./products/product2.jpg",
+				"./products/product3.jpg",
+				"./products/product4.jpg",
+				"./products/product5.jpg",
+				"./products/product6.jpg",
+				"./products/product7.jpg",
+				"./products/product8.jpg",
+				"./products/product9.jpg",
+				"./products/product10.jpg",
+				"./products/product11.jpg",
+				"./products/product12.jpg",
+				"./products/product13.jpg",
+				"./products/product14.jpg",
+				"./products/product15.jpg",
+				"./products/product16.jpg",
+			],
 			sizeArray: [
 			  { id: 1, name: 'XS', value: false },
 			  { id: 2, name: 'S', value: false },
@@ -32,16 +51,21 @@ class ProductData extends React.Component {
 	}
 
 	componentDidMount() {
+		let { raw } = this.state;
 		fetch(`https://react-shopping-cart-67954.firebaseio.com/products.json`)
     .then(response => response.json())
-    .then(data =>
+    .then(data =>	{
+    	data.products.map((element, index) => {
+				let addImage = {...element, image: this.state.images[index]};
+				raw.push(addImage);
+			})
       this.setState({
-        products: data.products,
-        data: data.products
+        products: raw,
+        data: raw
       })
-    )
+    })
 	}
-
+	
 	handleSize(size) {
 		let {products, sizeArray} = this.state;
 		let sizeProduct = products;
@@ -112,7 +136,7 @@ class ProductData extends React.Component {
 	}
 
 	render() {
-		let {products, data, sizeArray, cart} = this.state;
+		let {data, sizeArray, cart, products} = this.state;
 		return (
 			<div>
 				<div className="main">
@@ -123,7 +147,7 @@ class ProductData extends React.Component {
 					<div className="size-product-section">
 						<div className="size-section">
 							<SizeFilter 
-								products={products} 
+								products={data} 
 								handleSize = {this.handleSize} 
 								sizeArray= {sizeArray}
 							/>

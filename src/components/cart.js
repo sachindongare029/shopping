@@ -73,7 +73,7 @@ class Cart extends Component {
                       <hr className="cart-hr" />
                       <div className="product-container">
                         <div className="image-section">
-                          <img className="cart-image" src="./products/product2.jpg" alt="product" />
+                          <img className="cart-image" src={products.image} alt="product" />
                         </div>
                         <div className="product-info">
                           <span className="cart-title">{products.title}</span>

@@ -37,8 +37,9 @@ class Cart extends Component {
   }
 
   render() {
-    let { open, isHovered, node } = this.state;
+    let { open, isHovered } = this.state;
     let product = this.props.products;
+    console.log("product", product);
     let drawerState = open ? 'cart-drawer-open' : 'cart-drawer-closed';
     let itemCount = product.length;
     let total = product.map((element, index) => {
@@ -67,10 +68,11 @@ class Cart extends Component {
                 <i className="fa fa-shopping-cart"></i>
                 <span className="cart-text">Cart</span>
               </div>
-              { product.map((products, i) => {
+              { 
+                product.map((products, i) => {
                   return(
                     <div key={i} className="cart-container" id="cart-container">
-                      <hr className="cart-hr" />
+                      <hr className="cart-hr" />  
                       <div className="product-container">
                         <div className="image-section">
                           <img className="cart-image" src={products.image} alt="product" />

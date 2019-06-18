@@ -16,6 +16,7 @@ class ProductData extends React.Component {
 			cart: [],
 			cartProduct: [],
 			raw: [],
+			demo: [],
 			images: [
 				"./products/product1.jpg",
 				"./products/product2.jpg",
@@ -115,13 +116,15 @@ class ProductData extends React.Component {
 	}
 
 	handleCart(product) {
-		let { cart, cartProduct } = this.state;
-		let addCart = {...product, quantity: 1};
-		cartProduct.push(addCart);
-
-		cartProduct.map((element, index) => {
-			// console.log("element", element.id);
+		let { cart, cartProduct, demo } = this.state;
+		cartProduct.push({...product, quantity: 1});
+		cartProduct.forEach((element) => {
+			if(element.id === 12) {
+				demo.push(element);
+			}
+			// console.log("element.id", element.id);
 		})
+		// console.log("demo product", demo);
 
 		this.setState({
 			cart: cartProduct
